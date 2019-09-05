@@ -5,6 +5,8 @@ NavMouseOv.forEach(item => {
     item.style.color = 'grey';
     });
 });
+
+
 //----------------------------------------------
 const NavMouseOut = document.querySelectorAll('a');
 NavMouseOut.forEach(item => {
@@ -12,7 +14,44 @@ NavMouseOut.forEach(item => {
     item.style.color = 'black';
     });
 });
-//----------------------------------------------
+
+//--------------added prevents navigation during TL meeting----------------
+const stopNavigation = document.querySelectorAll('nav a');
+stopNavigation.forEach(items =>{
+    items.addEventListener('click', e => {
+        e.preventDefault();
+    })
+})
+
+//--------------------added right click img during TL meeting -----------
+
+const selectAlert = document.querySelector('.img-fluid');
+selectAlert.addEventListener('contextmenu', e => {
+    e.preventDefault();
+    
+    alert("picture of a boat");
+});
+//-------------------added input during TL meeting
+
+const input = document.createElement('input')
+
+input.setAttribute('type', 'text')
+input.setAttribute('value', 'Please Input Name');
+input.style.backgroundColor = 'brown';
+input.style.height = "50px";
+input.style.marginLeft= "300px";
+const containerHome = document.querySelector('.home');
+containerHome.appendChild(input);
+//------------- added focus during TL ---------
+input.addEventListener('focus', e =>{
+    // alert("thanks for the input")
+    e.target.style.backgroundColor = "purple";
+
+})
+input.addEventListener('blur', event=>{
+    event.target.style.backgroundColor = "blue";
+});
+//------------------------
 const keyDown = document.querySelector('body');
 keyDown.addEventListener('keypress', e => {
     if(e.keyCode === 66){
@@ -92,11 +131,24 @@ window.addEventListener('scroll', function(e) {
 });
 
 //------------------------
-const btnDouble = document.querySelectorAll('.btn');
-btnDouble.forEach(item => {
-    item.addEventListener('dblclick', e => {
-    item.style.backgroundColor = "purple";
-    });
+// const destH4 = document.querySelector('.destination h4')
+// const btnDouble = document.querySelectorAll('.btn');
+// btnDouble.forEach(item => {
+//     item.addEventListener('dblclick', e => {
+//     //item.style.backgroundColor = "purple";
+//     destH4.style.fontSize = "4rem";
+//     });
+// })
+//-----------------modified during TL meeting -------
+const Dest = document.querySelectorAll('.destination');
+
+Dest.forEach((item, index) => {
+    const btn = document.querySelectorAll('.btn');
+    const h4 = document.querySelectorAll('.destination h4');
+    btn[index].addEventListener('dblclick', e => {
+        h4[index].style.fontSize = '4rem';
+
+    })
 })
 
 //----------------------------------
