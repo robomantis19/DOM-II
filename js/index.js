@@ -84,21 +84,44 @@ window.addEventListener('keyup', (key) => {
 // Does not work.
 
 
-const allAboard = document.querySelector('.intro p'); 
-allAboard.addEventListener('select', buslog);
-function buslog(event){
-    const introH2 = document.querySelector('.intro h2'); 
-    const selection = event.target.value.substring(event.target.selectionStart, event.target.selectionEnd)
-    introH2.append(`You selected: ${selection}`); 
-}
+// const allAboard = document.querySelector('.intro p'); 
+// allAboard.addEventListener('select', buslog);
+// function buslog(event){
+//     const introH2 = document.querySelector('.intro h2'); 
+//     const selection = event.target.value.substring(event.target.selectionStart, event.target.selectionEnd)
+//     introH2.append(`You selected: ${selection}`); 
+// }
+
 
 const titles = document.querySelectorAll('h2')
 Array.from(titles).forEach( (element) => {
     element.addEventListener('dblclick', function(e) {
     element.style.fontSize = '4rem'; 
+    e.preventDefault('select');
+        e.target.addEventListener('click', function(lower) {
+            e.target.style.fontSize = "3.2rem";
+            e.preventDefault('select');
+        });
     });
+    // element.addEventListener('dbclick', function(e){
+    //     element.style.fontSize = "2rem";
+    // });
 })
 
+const btns = document.querySelectorAll('.destination .btn');
+const h4 = document.querySelectorAll('.destination h4')
+Array.from(btns).forEach((element, i) => { 
+    element.addEventListener('click', (superSizeMe) => {
+           element.style.color = "blue"; 
+        //    Array.from(h4).forEach((item) => { 
+
+        //    })
+           const culur = ['red' , 'blue', 'yellow']
+           
+           h4[i].style.color = culur[i];
+        
+    })
+})
 
 
 
@@ -115,19 +138,29 @@ Array.from(titles).forEach( (element) => {
 
 
 //didn't work -----------------------
-function zoom(event) {
-    event.preventDefault();
+// function zoom(event) {
+//     event.preventDefault();
   
-    scale += event.deltaY * -0.01;
+//     scale += event.deltaY * -0.01;
   
-    // Restrict scale
-    scale = Math.min(Math.max(.125, scale), 4);
+//     // Restrict scale
+//     scale = Math.min(Math.max(.125, scale), 4);
   
-    // Apply scale transform
-    el.style.transform = `scale(${scale})`;
-  }
+//     // Apply scale transform
+//     el.style.transform = `scale(${scale})`;
+//   }
   
-  let scale = 1;
-  const el = document.querySelector('.destination p');
-  el.onwheel = zoom;
+//   let scale = 1;
+//   const el = document.querySelector('.destination p');
+//   el.onwheel = zoom;
+const wheels = document.querySelectorAll('.destination p');
+
+Array.from(wheels).forEach( (item2) => { 
+    item2.addEventListener('wheel', (e) => {            
+        e.target.style.transform = `scale(1.2)`; //'scale( 1 )';
+        e.target.addEventListener('click', (event) => { 
+            e.target.style.transform = `scale(1)`
+        }) 
+    })
+})
 
