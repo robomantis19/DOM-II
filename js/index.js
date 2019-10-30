@@ -84,13 +84,17 @@ window.addEventListener('keyup', (key) => {
 // Does not work.
 
 
-// const allAboard = document.querySelector('.intro p'); 
-// allAboard.addEventListener('select', buslog);
-// function buslog(event){
-//     const introH2 = document.querySelector('.intro h2'); 
-//     const selection = event.target.value.substring(event.target.selectionStart, event.target.selectionEnd)
-//     introH2.append(`You selected: ${selection}`); 
-// }
+const allAboard = document.querySelector('.intro p'); 
+
+allAboard.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    alert("you've got a nice right click")  
+});
+let border = document.querySelector('.intro')
+window.addEventListener('scroll', (event) => { 
+    border.style.borderBottom = "2px dashed blue";
+});
+
 
 
 const titles = document.querySelectorAll('h2')
@@ -103,9 +107,7 @@ Array.from(titles).forEach( (element) => {
             e.preventDefault('select');
         });
     });
-    // element.addEventListener('dbclick', function(e){
-    //     element.style.fontSize = "2rem";
-    // });
+   
 })
 
 const btns = document.querySelectorAll('.destination .btn');
@@ -126,33 +128,6 @@ Array.from(btns).forEach((element, i) => {
 
 
 
-
-
-
-
-
-// let destination = document.querySelectorAll('.destination');
-// Array.from(destination).forEach((element ) => {
-//     element.addEventListener('wheel', zoom); 
-// })
-
-
-//didn't work -----------------------
-// function zoom(event) {
-//     event.preventDefault();
-  
-//     scale += event.deltaY * -0.01;
-  
-//     // Restrict scale
-//     scale = Math.min(Math.max(.125, scale), 4);
-  
-//     // Apply scale transform
-//     el.style.transform = `scale(${scale})`;
-//   }
-  
-//   let scale = 1;
-//   const el = document.querySelector('.destination p');
-//   el.onwheel = zoom;
 const wheels = document.querySelectorAll('.destination p');
 
 Array.from(wheels).forEach( (item2) => { 
